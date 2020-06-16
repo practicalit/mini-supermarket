@@ -1,4 +1,5 @@
 let cart = [];
+let product=[]
 let product = document.getElementById('product');
 let unitPrice = document.querySelector('#price');
 let quantity = document.querySelector('#quantity');
