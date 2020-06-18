@@ -1,7 +1,10 @@
-let cart = [];
-let product=[];
+//this contains the products we have in the SM.
+let products = []; //think of this as the storage.
 let product = document.getElementById('product');
-let unitPrice = document.querySelector('#price');
+let productName = document.getElementById('productName');
+let btnAddProduct = document.getElementById('addProduct');
+let unitPrice = document.querySelector('#productPrice');
+let stock = document.querySelector('#stock');
 let quantity = document.querySelector('#quantity');
 let btnAddToCart = document.getElementById("addCart");
 let btnTotal = document.querySelector('#total');
@@ -10,6 +13,32 @@ let firstNameInput = document.getElementById('first');
 let lastNameInput = document.getElementById('last');
 let nameFirst = document.getElementById("nameFirst");
 let nameLast = document.getElementById("nameLast");
+let PlasticBag = document.getElementsByClassName("custom-control-input");
+let selectState = document.querySelector("#inlineFormCustomSelect");
+let btnInventory = document.getElementById("lowInventory");
+//handler for the click of hte btnAddCart
+/**
+ * When the storekeeper is adding a product to the SM 
+ * he/she will add name, price and stock and hit the add product buttn 
+ */
+ btnAddProduct.addEventListener('click', function(){
+    
+   if(stock.value<=0 && product.value==""  ) {
+     alert("error");
+     return false;}else{ let product = {};
+     product.unitPrice = unitPrice.value;
+     product.stock = stock.value;
+     product.name = productName.value;
+    console.log(product);
+   }
+ });
+ function InputonlyNumbers(evt){
+    var ch = String.fromCharCode(evt.which); 
+    if(!(/[0-9]/.test(ch) ) ){
+        evt.preventDefault();
+        alert("please enter only numbers");
+    }
+}
 btnAddToCart.addEventListener('click', function(){
     if (product.value != "" && unitPrice.value != "" && quantity.value != "") {
         let item = {};
@@ -23,6 +52,11 @@ btnAddToCart.addEventListener('click', function(){
     }
     console.log(cart);
 });
+/*btnAddProduct.addEventListener('click', function(){
+    if( stock.value<=0){
+        alert ("eror");
+    }
+});*/
 btnTotal.addEventListener('click', function(){
     let total = 0;
     for (let i = 0; i < cart.length ; i++) {
