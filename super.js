@@ -1,3 +1,4 @@
+let cart = [];
 //this contains the products we have in the SM.
 let products = []; //think of this as the storage.
 let product = document.getElementById('product');
@@ -13,9 +14,10 @@ let firstNameInput = document.getElementById('first');
 let lastNameInput = document.getElementById('last');
 let nameFirst = document.getElementById("nameFirst");
 let nameLast = document.getElementById("nameLast");
-let PlasticBag = document.getElementsByClassName("custom-control-input");
+let PlasticBag = document.querySelector('#plasticBag');
 let selectState = document.querySelector("#inlineFormCustomSelect");
 let btnInventory = document.getElementById("lowInventory");
+ 
 //handler for the click of hte btnAddCart
 /**
  * When the storekeeper is adding a product to the SM 
@@ -23,22 +25,21 @@ let btnInventory = document.getElementById("lowInventory");
  */
  btnAddProduct.addEventListener('click', function(){
     
-   if(stock.value<=0 && product.value==""  ) {
-     alert("error");
-     return false;}else{ let product = {};
+    if (productName.value != ""
+        && unitPrice.value != "" && unitPrice.value > 0
+        && stock.value != "" && stock.value >= 0){
+        let product = {}; 
      product.unitPrice = unitPrice.value;
      product.stock = stock.value;
      product.name = productName.value;
-    console.log(product);
-   }
- });
- function InputonlyNumbers(evt){
-    var ch = String.fromCharCode(evt.which); 
-    if(!(/[0-9]/.test(ch) ) ){
-        evt.preventDefault();
-        alert("please enter only numbers");
+     products.push(product);
+     console.log(products);
+    }else{
+        message.classList.add('error');
+        message.innerHTML = "Please provide all product, price and quantity to proceed";
     }
-}
+    
+});
 btnAddToCart.addEventListener('click', function(){
     if (product.value != "" && unitPrice.value != "" && quantity.value != "") {
         let item = {};
@@ -51,7 +52,7 @@ btnAddToCart.addEventListener('click', function(){
         message.innerHTML = "Please provide all product, price and quantity to proceed";
     }
     console.log(cart);
-});
+})
 /*btnAddProduct.addEventListener('click', function(){
     if( stock.value<=0){
         alert ("eror");
@@ -60,8 +61,11 @@ btnAddToCart.addEventListener('click', function(){
 btnTotal.addEventListener('click', function(){
     let total = 0;
     for (let i = 0; i < cart.length ; i++) {
-        total = total + (cart[i].unitPrice * cart[i].quantity);
+        total = total + (parseFloat(cart[i].unitPrice )*parseFloat(cart[i].quantity));
     }
+    tax = total * parseFloat(inlineFormCustomSelect.value)/100;
+    total = total + tax;
+
     message.innerHTML = "The total price is $" + total;
 });
 /**
@@ -76,4 +80,13 @@ firstNameInput.addEventListener('keyup', function(){
 });
 lastNameInput.addEventListener('keyup', function(){
     nameLast.innerHTML = this.value;
+});
+PlasticBag.addEventListener('change', function(){
+   if(PlasticBag.checked){
+    total+=0.15
+   }else{
+    total-=0.15
+   }
+    
+
 });
