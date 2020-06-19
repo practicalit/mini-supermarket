@@ -14,6 +14,7 @@
                 <div class="col-4">
                     <span id="nameFirst">First Name</span> <span id="nameLast">Last Name</span>
                 </div>
+                
                 <div class="col-2">
                   <span id="totalCartSize">0</span> items are in the cart
               </div>
@@ -44,6 +45,8 @@
                   </div>                            
                   <button id="addProduct" type="button" class="btn btn-primary">Register Product</button> 
                 </form>
+                <span id="Stock">Stock Balance</span>
+                
                 <div class="linebreak"></div>
                 <div id="message" class="alert alert-primary" role="alert">
                     Let's build your shopping cart. 
@@ -57,6 +60,7 @@
                       <label for="quantity">Quantity</label>
                       <input type="number" class="form-control" id="quantity" aria-describedby="quantityHelp">
                     </div>
+                    
                     <div class="form-group">
                       <label class="mr-sm-2" for="inlineFormCustomSelect">State</label>
                       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
@@ -72,8 +76,8 @@
                     </div>
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="plasticBag">
-                      <label class="custom-control-label" for="plasticBag">Have you used plastic bag?</label>
-                      <small id="emailHelp" class="form-text text-muted">0.15cent will be added to total if you use plastic bag.</small>
+                      <label class="custom-control-label" id="plasticBag" for="plasticBag">Have you used plastic bag?</label>
+                      <small id="emailHelp" class="form-text ">0.15cent will be added to total if you use plastic bag.</small>
                     </div>   
                     <div class="linebreak"></div>                         
                     <button id="addCart" type="button" class="btn btn-primary">Add Item To Cart</button> | 

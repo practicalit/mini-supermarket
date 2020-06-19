@@ -1,7 +1,7 @@
 let cart = [];
 //this contains the products we have in the SM.
 let products = []; //think of this as the storage.
-let product = document.getElementById('product');
+let productImput = document.getElementById('product');
 let productName = document.getElementById('productName');
 let btnAddProduct = document.getElementById('addProduct');
 let unitPrice = document.querySelector('#productPrice');
@@ -14,10 +14,11 @@ let firstNameInput = document.getElementById('first');
 let lastNameInput = document.getElementById('last');
 let nameFirst = document.getElementById("nameFirst");
 let nameLast = document.getElementById("nameLast");
-let PlasticBag = document.querySelector('#plasticBag');
-let selectState = document.querySelector("#inlineFormCustomSelect");
+let PlasticBag = document.getElementById('plasticBag');
+let selectedState = document.querySelector("#inlineFormCustomSelect");
 let btnInventory = document.getElementById("lowInventory");
- 
+let stockBalance = document.querySelector('#stock'); 
+let total = 0;
 //handler for the click of hte btnAddCart
 /**
  * When the storekeeper is adding a product to the SM 
@@ -28,46 +29,61 @@ let btnInventory = document.getElementById("lowInventory");
     if (productName.value != ""
         && unitPrice.value != "" && unitPrice.value > 0
         && stock.value != "" && stock.value >= 0){
-        let product = {}; 
+        let product= {}; 
      product.unitPrice = unitPrice.value;
      product.stock = stock.value;
      product.name = productName.value;
      products.push(product);
+     stockBalance.innerHTML = stock.value=+stock.value;
      console.log(products);
     }else{
         message.classList.add('error');
         message.innerHTML = "Please provide all product, price and quantity to proceed";
     }
-    
+    console.log(products);
 });
 btnAddToCart.addEventListener('click', function(){
-    if (product.value != "" && unitPrice.value != "" && quantity.value != "") {
-        let item = {};
-        item.product = product.value;
-        item.unitPrice = unitPrice.value;
-        item.quantity = quantity.value;
-        cart.push(item);
-    } else {
-        message.classList.add('error');
-        message.innerHTML = "Please provide all product, price and quantity to proceed";
-    }
-    console.log(cart);
-})
-/*btnAddProduct.addEventListener('click', function(){
-    if( stock.value<=0){
-        alert ("eror");
-    }
-});*/
-btnTotal.addEventListener('click', function(){
-    let total = 0;
-    for (let i = 0; i < cart.length ; i++) {
-        total = total + (parseFloat(cart[i].unitPrice )*parseFloat(cart[i].quantity));
-    }
-    tax = total * parseFloat(inlineFormCustomSelect.value)/100;
-    total = total + tax;
+        if (productImput.value != "" && unitPrice.value != "" && quantity.value != "") {
+            let item = {};
+            item.productName = productImput.value;
+            item.unitPrice = unitPrice.value;
+            item.quantity = quantity.value;
+            cart.push(item);
+            message.innerHTML = "Successfully added " + item.productName + " to the cart !";
 
-    message.innerHTML = "The total price is $" + total;
-});
+        } else {
+            message.classList.add('error');
+            message.innerHTML = "Please provide all product, price and quantity to proceed";
+        }
+        console.log(cart);
+    });
+    btnAddProduct.addEventListener('click', function(){
+        if( stock.value<=0){
+            alert ("eror");
+        }
+    });
+    btnTotal.addEventListener('click', function(){
+        
+        let tax = 0;
+        for (let i = 0; i < cart.length ; i++) {
+            total = total + (cart[i].unitPrice * cart[i].quantity);
+        }
+        tax = total *parseFloat(selectedState.value) / 100;
+        total = total + tax;
+
+        message.innerHTML = "The total price is $" + total;
+    });
+    PlasticBag.addEventListener('click', function(){
+     if(PlasticBag.checked){
+      total += 0.15
+         message.innerHTML = total;
+     } else {
+         total -= 0.15
+         message.innerHTML = total;
+     
+     
+        }
+    });    
 /**
  * Here is how the event for the keyup is captured.
  * Everytime the key is pressed and released it will come here 
@@ -81,12 +97,13 @@ firstNameInput.addEventListener('keyup', function(){
 lastNameInput.addEventListener('keyup', function(){
     nameLast.innerHTML = this.value;
 });
-PlasticBag.addEventListener('change', function(){
-   if(PlasticBag.checked){
-    total+=0.15
-   }else{
-    total-=0.15
-   }
-    
 
-});
+
+
+btnInventory.addEventListener('click',function(){
+    if(products.filter(s=>s.stock<10)==null){
+        message.innerHTML = "there is No Low inventories";  
+    }else{
+
+    }
+})
