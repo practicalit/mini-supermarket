@@ -76,10 +76,10 @@ btnAddToCart.addEventListener('click', function(){
     PlasticBag.addEventListener('click', function(){
      if(PlasticBag.checked){
       total += 0.15
-         message.innerHTML = total;
+         message.innerHTML =  "The total price is $" + total;
      } else {
          total -= 0.15
-         message.innerHTML = total;
+         message.innerHTML = "The total price is $" + total;
      
      
         }
