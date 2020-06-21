@@ -10,7 +10,7 @@ let firstNameInput = document.getElementById('first');
 let lastNameInput = document.getElementById('last');
 let nameFirst = document.getElementById("nameFirst");
 let nameLast = document.getElementById("nameLast");
-btnAddToCart.addEventListener('click', function(){
+btnAddToCart.addEventListener('click', function( ){
     if (product.value != "" && unitPrice.value != "" && quantity.value != "") {
         let item = {};
         item.product = product.value;
