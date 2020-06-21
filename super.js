@@ -1,7 +1,11 @@
 let cart = [];
-let products = [];
+//this contains the products we have in the SM.
+let products = []; //think of this as the storage.
 let product = document.getElementById('product');
-let unitPrice = document.querySelector('#price');
+let productName = document.getElementById('productName');
+let btnAddProduct = document.getElementById('addProduct');
+let unitPrice = document.querySelector('#productPrice');
+let stock = document.querySelector('#stock');
 let quantity = document.querySelector('#quantity');
 let btnAddToCart = document.getElementById("addCart");
 let btnTotal = document.querySelector('#total');
@@ -10,7 +14,19 @@ let firstNameInput = document.getElementById('first');
 let lastNameInput = document.getElementById('last');
 let nameFirst = document.getElementById("nameFirst");
 let nameLast = document.getElementById("nameLast");
-btnAddToCart.addEventListener('click', function( ){
+//handler for the click of hte btnAddCart
+/**
+ * When the storekeeper is adding a product to the SM 
+ * he/she will add name, price and stock and hit the add product buttn 
+ */
+ btnAddProduct.addEventListener('click', function(){
+     let product = {};
+     product.unitPrice = unitPrice.value;
+     product.stock = stock.value;
+     product.name = productName.value;
+    products.push(product);  
+ });
+btnAddToCart.addEventListener('click', function(){
     if (product.value != "" && unitPrice.value != "" && quantity.value != "") {
         let item = {};
         item.product = product.value;
