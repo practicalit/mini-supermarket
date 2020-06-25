@@ -9,13 +9,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <h2 class="text-center">Practical Supermarket</h2>
+                    <h2 class="text-center">Practical IT April group Supermarket</h2>
                 </div>
                 <div class="col-4">
                     <span id="nameFirst">First Name</span> <span id="nameLast">Last Name</span>
                 </div>
                 <div class="col-2">
-                  <span id="totalCartSize">0</span> items in cart
+                  <span id="totalCartSize">0</span> items are in the cart
               </div>
             </div>
             <div>
@@ -35,27 +35,27 @@
                     <input type="text" class="form-control" id="productName" aria-describedby="productHelp" placeholder="Product name here">
                   </div>
                   <div class="form-group">
-                      <label for="">Unit Price</label>
-                      <input type="text" class="form-control" id="productPrice" aria-describedby="priceHelp">
+                      <label for="text">Unit Price</label>
+                      <input type="number" class="form-control" id="productPrice" aria-describedby="priceHelp">
                     </div>              
                   <div class="form-group">
                     <label for="quantity">Stock</label>
-                    <input type="text" class="form-control" id="stock" placeholder="how many of this item in the store" aria-describedby="quantityHelp">
+                    <input type="number" class="form-control" id="stock" placeholder="how many of this item in the store" aria-describedby="quantityHelp">
                   </div>                            
-                  <button id="addCart" type="button" class="btn btn-primary">Register Product</button> 
+                  <button id="addProduct" type="button" class="btn btn-primary">Register Product</button> 
                 </form>
                 <div class="linebreak"></div>
                 <div id="message" class="alert alert-primary" role="alert">
-                    Let's build your shopping cart.. 
+                    Let's build your shopping cart. 
                   </div>
                 <form>
                     <div class="form-group">
                       <label for="product">Product Name</label>
-                      <input type="text" class="form-control error-input" id="product" aria-describedby="productHelp" placeholder="Product name here">
+                      <input type="text" class="form-control" id="product" aria-describedby="productHelp" placeholder="Product name here">
                     </div>
                     <div class="form-group">
                       <label for="quantity">Quantity</label>
-                      <input type="text" class="form-control" id="quantity" aria-describedby="quantityHelp">
+                      <input type="number" class="form-control" id="quantity" aria-describedby="quantityHelp">
                     </div>
                     <div class="form-group">
                       <label class="mr-sm-2" for="inlineFormCustomSelect">State</label>
@@ -64,9 +64,10 @@
                         <option value="6">DC</option>
                         <option value="6.6">Delaware</option>
                         <option value="6">Maryland</option>
-                        <option value="6">Pennsylvania</option>
-                        <option value="8.82">New York</option>
+                        <option value="6.6">Pennsylvania</option>
+                        <option value="8.2">New York</option>
                         <option value="4.3">Virginia</option>
+                        <option value="5.2">Ohio</option>
                       </select>
                     </div>
                     <div class="custom-control custom-checkbox">
@@ -81,6 +82,7 @@
                     <div class="linebreak"></div>
                     <div class="card">
                       <div class="card-body">
+                       
                         Tasks: 
                         <ol>
                           <li>When the user types first and last name, show it on the top right corner</li>
@@ -92,13 +94,14 @@
                           <li>Depending on where the customer is coming from, apply the sales tax</li>
                           <li>When Low Inventories is clicked, show in tabular format, those which have stock level below 10</li>
                           <li>Whenever there is user error on input box, use error-input css. Eg is given on Product Name</li>
-                          <li>Groups [Solomon, Melki], [Yibekal, Afnin Getnet]</li>
+              
                         </ol>
                       </div>
                     </div>
                   </form>
             </div>
         </div>
+        
         <script src="super.js"></script>
     </body>
 </html>
